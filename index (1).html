@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Control Solutions — Always Here to Help</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a1628;
+      --deep: #0d1f3c;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --cream-light: #faf7f2;
+      --slate: #8a9ab5;
+      --white: #ffffff;
+      --text: #1a2a40;
+      --text-soft: #4a5a6e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream-light);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      transition: padding 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 500 !important;
+      color: var(--navy) !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(13, 31, 60, 0.8) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-line {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+    .hero-line-1 { top: 35%; }
+    .hero-line-2 { top: 65%; opacity: 0.15; }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      padding-top: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 30px; height: 1px;
+      background: var(--gold);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      font-size: 1rem;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    .hero-right {
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateX(30px);
+      animation: slideIn 0.6s forwards;
+    }
+    .stat-card:nth-child(1) { animation-delay: 0.3s; }
+    .stat-card:nth-child(2) { animation-delay: 0.5s; }
+    .stat-card:nth-child(3) { animation-delay: 0.7s; }
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label { color: rgba(255,255,255,0.55); font-size: 0.82rem; letter-spacing: 0.05em; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 1px;
+      background: var(--gold);
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    h2 em { font-style: italic; color: var(--navy); }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+    .services-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .services-header p { color: var(--text-soft); margin-top: 1rem; line-height: 1.7; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--cream);
+    }
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover { background: var(--cream-light); }
+    .service-card:hover::after { width: 100%; }
+    .service-icon {
+      width: 48px; height: 48px;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.9rem; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--cream-light); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-frame {
+      background: var(--navy);
+      aspect-ratio: 4/5;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, transparent 60%);
+    }
+    .about-nz-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: rgba(255,255,255,0.06);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      position: absolute;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      width: 130px; height: 130px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      border: 4px solid var(--cream-light);
+    }
+    .about-badge-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .about-nz-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.12;
+    }
+    .about-text p {
+      color: var(--text-soft);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .about-text h2 { margin-bottom: 1.5rem; }
+    .about-sig {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .about-sig-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+    .about-sig-role { color: var(--text-soft); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--navy); }
+    #process .section-label { color: var(--gold); }
+    #process h2 { color: var(--white); }
+    #process h2 em { color: var(--gold-light); }
+    .process-intro { color: rgba(255,255,255,0.55); margin-top: 1rem; max-width: 500px; line-height: 1.7; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 2rem; left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2), var(--gold));
+    }
+    .process-step {
+      padding: 0 2rem;
+      text-align: center;
+    }
+    .step-num {
+      width: 4rem; height: 4rem;
+      background: var(--navy);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      position: relative; z-index: 1;
+    }
+    .process-step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .process-step p { color: rgba(255,255,255,0.45); font-size: 0.85rem; line-height: 1.7; }
+
+    /* ── VALUES ── */
+    #values { background: var(--cream); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(0,0,0,0.08);
+      margin-top: 3rem;
+    }
+    .value-item {
+      background: var(--cream);
+      padding: 2.5rem 3rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: background 0.25s;
+    }
+    .value-item:hover { background: var(--white); }
+    .value-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.25);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 60px;
+    }
+    .value-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .value-item p { color: var(--text-soft); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--deep);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 70% 100% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+    .cta-inner {
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .cta-inner h2 { color: var(--white); margin-bottom: 1rem; }
+    .cta-inner p { color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 1.5rem; }
+    .contact-info p { color: var(--text-soft); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.9rem;
+    }
+    .contact-detail-icon { color: var(--gold); flex-shrink: 0; }
+    .contact-detail-text { color: var(--text-soft); }
+    .contact-detail-text strong { color: var(--text); display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.1rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); font-weight: 500; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--cream-light);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 2px;
+      padding: 0.85rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 0;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero-content { grid-template-columns: 1fr; padding: 1.5rem; padding-top: 100px; }
+      .hero-right { display: none; }
+      .container { padding: 0 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Credit <span>Control</span> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#process">Our Process</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-line hero-line-1"></div>
+  <div class="hero-line hero-line-2"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">New Zealand Wide</div>
+      <h1>Always Here<br>to <em>Help You</em><br>Win.</h1>
+      <p class="hero-sub">We bridge the gap between property managers and tenants — resolving disputes, managing tribunals, and building the long-term relationships that protect your business.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.03 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          Speak With Us
+        </a>
+        <a href="#services" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Our Services
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-num">NZ-Wide</div>
+        <div class="stat-label">Operating across all of New Zealand</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Win–Win</div>
+        <div class="stat-label">Outcomes for managers and tenants alike</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Dedicated to long-term relationships</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div class="section-label">What We Offer</div>
+      <h2>Specialist services that <em>save your time</em></h2>
+      <p>We handle the complex, time-consuming credit control tasks so property managers can focus on what matters most — their properties and tenants.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 6h18M3 12h18M3 18h18"/><rect x="2" y="3" width="20" height="18" rx="2"/>
+        </svg>
+        <h3>Tenancy Tribunal Hearings</h3>
+        <p>We represent property managers at Tenancy Tribunal hearings — preparing documentation, presenting cases, and advocating for fair outcomes so you don't have to attend.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+        <h3>Mediation Services</h3>
+        <p>Professional mediation that facilitates constructive dialogue between landlords and tenants, resolving disputes before they escalate to formal proceedings.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        <h3>Relationship Management</h3>
+        <p>Acting as the bridge between property managers and tenants, we nurture professional relationships that lead to better outcomes for all parties over the long term.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <h3>Credit Control Advisory</h3>
+        <p>Strategic guidance on streamlining your credit control processes, helping property management companies become smarter, smoother, and more efficient.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        <h3>Documentation & Filing</h3>
+        <p>Complete preparation and lodgement of all required documentation for tribunal applications, ensuring nothing is missed and timelines are met.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <h3>Nationwide Coverage</h3>
+        <p>With operations across all of New Zealand, we provide consistent, professional credit control support wherever your properties are located.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <div class="about-img-frame">
+          <div class="about-nz-text">NZ</div>
+          <svg class="about-nz-icon" width="280" height="340" viewBox="0 0 100 120" fill="white">
+            <path d="M55 10 C60 15, 75 20, 80 35 C85 50, 75 55, 70 65 C65 75, 68 85, 60 90 C52 95, 45 88, 40 80 C35 72, 38 62, 35 52 C32 42, 22 38, 25 25 C28 12, 45 8, 55 10Z"/>
+            <path d="M30 70 C25 75, 15 80, 18 90 C21 100, 35 95, 38 85 C41 75, 35 65, 30 70Z"/>
+          </svg>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">2015</div>
+          <div class="about-badge-text">Est. in NZ</div>
+        </div>
+      </div>
+      <div class="about-text fade-up">
+        <div class="section-label">Our Story</div>
+        <h2>A family business built on <em>trust & purpose</em></h2>
+        <p>Credit Control Solutions was founded by Sunil and Deepika after years in the property management industry — where they saw firsthand the toll that credit control disputes took on managers, tenants, and relationships alike.</p>
+        <p>Originally from Bangalore, India, they moved to New Zealand in 2015 and built this company from the ground up — driven by a shared belief that there is a better, more human way to resolve tenancy disputes.</p>
+        <p>Inspired by their daughter Tiara, they set out to create a business that operates as a trusted partner to property managers across New Zealand — always professional, always accessible, and always working towards that win-win outcome.</p>
+        <div class="about-sig">
+          <div class="about-sig-name">Sunil, Deepika & Tiara</div>
+          <div class="about-sig-role">Founders, Credit Control Solutions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">How It Works</div>
+      <h2>A clear path to <em>resolution</em></h2>
+      <p class="process-intro">We handle every step of the process — from the first call through to a resolved outcome — keeping you informed at every stage.</p>
+    </div>
+    <div class="process-grid fade-up">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Initial Consultation</h3>
+        <p>We listen to your situation, understand the dispute, and advise on the best path forward — free, no obligation.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Case Preparation</h3>
+        <p>We compile all evidence, draft required documentation, and lodge applications on your behalf accurately and on time.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Mediation or Hearing</h3>
+        <p>We attend and represent you at mediation sessions or Tenancy Tribunal hearings — you don't need to be there.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Resolution & Follow-up</h3>
+        <p>We ensure outcomes are enforced and provide guidance on preventing similar disputes from arising in the future.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width: 550px; margin: 0 auto 1rem;">
+      <div class="section-label" style="justify-content:center;">Core Values</div>
+      <h2>The principles that <em>guide us</em></h2>
+    </div>
+    <div class="values-grid fade-up">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div>
+          <h3>Integrity First</h3>
+          <p>We act with complete honesty and transparency in every interaction — with property managers, tenants, and all parties involved in a dispute.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div>
+          <h3>Win–Win Philosophy</h3>
+          <p>We believe lasting resolutions benefit all parties. We don't seek to "win" at someone else's expense — we pursue outcomes that are fair and sustainable.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div>
+          <h3>Always Accessible</h3>
+          <p>As our tagline promises — we are always here to help. Responsive, reliable, and available when our clients need us most.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div>
+          <h3>Long-Term Relationships</h3>
+          <p>We invest in the relationships we build. Like any great partnership, trust is earned over time — and we're in it for the long haul.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner fade-up">
+      <div class="section-label" style="justify-content:center;">Get Started Today</div>
+      <h2>Ready to resolve your<br><em>tenancy challenges?</em></h2>
+      <p>Let us take the stress of credit control off your plate. Reach out today for a no-obligation conversation about how we can help your property management business.</p>
+      <a href="#contact" class="btn-primary" style="display:inline-flex;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.03 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        Contact Us Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="section-label">Get in Touch</div>
+        <div class="contact-info">
+          <h2>We'd love to <em>hear from you</em></h2>
+          <p>Whether you have a specific dispute in mind, or just want to understand how we can support your property management practice — we're ready to talk.</p>
+        </div>
+        <div class="contact-detail">
+          <svg class="contact-detail-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.03 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            Available on request
+          </div>
+        </div>
+        <div class="contact-detail">
+          <svg class="contact-detail-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            Available via contact form
+          </div>
+        </div>
+        <div class="contact-detail">
+          <svg class="contact-detail-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="contact-detail-text">
+            <strong>Location</strong>
+            Operating New Zealand Wide
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Sunil" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Sharma" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@company.co.nz" />
+          </div>
+          <div class="form-group">
+            <label>Enquiry Type</label>
+            <select>
+              <option value="">Select a service…</option>
+              <option>Tenancy Tribunal Representation</option>
+              <option>Mediation Services</option>
+              <option>Credit Control Advisory</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us briefly about your situation…"></textarea>
+          </div>
+          <button class="form-submit">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Credit <span>Control</span> Solutions</div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-copy">© 2024 Credit Control Solutions Ltd. New Zealand.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding = window.scrollY > 60 ? '0.9rem 4rem' : '1.4rem 4rem';
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
